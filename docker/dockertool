@@ -1,0 +1,36 @@
+#!/bin/bash
+
+for i in "$@"
+do
+case $i in
+    --ilist)
+    echo "Listing docker images"
+    docker images -a
+    ;;
+
+    --clist)
+    echo "Listing exited docker containers"
+    docker ps -a -f status=exited -f status=created
+    ;;
+
+    --clean)
+    echo "Cleaning exited docker containers"
+    docker rm $(docker ps -a -f status=exited -f status=created -q)
+
+    ;;
+
+    --stopall)
+    echo "Stopping all running docker container"
+    docker stop $(docker ps -a -q)
+    ;;
+
+    --removeall)
+    echo "Removing all docker containers"
+    docker rm $(docker ps -a -q)
+    ;;
+
+    *)
+            # unknown option
+    ;;
+esac
+done

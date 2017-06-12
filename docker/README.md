@@ -13,3 +13,10 @@ https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-con
 
 	$ docker rmi $(docker images -f dangling=true -q)
 
+### List Exited Containers
+
+	$ docker ps -a -f status=exited -f status=created
+
+### Remove Exited Containers
+
+	$ docker rm $(docker ps -a -f status=exited -f status=created -q)
