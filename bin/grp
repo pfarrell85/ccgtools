@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Script to run grep but exclude the .git directory
+
+grep -rnIs --color=ALWAYS --exclude-dir=.git $1 .

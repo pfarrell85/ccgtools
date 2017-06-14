@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Script to launch gitk with all remote branches shown
+
+gitk --all &

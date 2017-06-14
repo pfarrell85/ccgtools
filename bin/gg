@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Script to launch git gui in the background
+
+git gui &
