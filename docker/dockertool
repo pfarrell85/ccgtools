@@ -13,6 +13,15 @@ case $i in
     docker ps -a -f status=exited -f status=created
     ;;
 
+    --dlist)
+    echo "Listing dangling images"
+    docker images -f dangling=true
+    ;;
+
+    --dclean)
+    echo "Removing dangling images"
+    docker rmi $(docker images -f dangling=true -q)
+
     --clean)
     echo "Cleaning exited docker containers"
     docker rm $(docker ps -a -f status=exited -f status=created -q)
